@@ -29,8 +29,7 @@ sed -i -e "/proto udp/s/.*/;proto udp/" \
        -e 's/^(ca.*|cert.*|key.*)/#\1/' \
        -e 's/^;cipher.*/cipher AES-128-CBC/' \
        -e '/^cipher AES-128-CBC/a auth SHA256' \
-       -e 's/^;(tls-auth.*)/\1/' \
-       -e '/^tls-auth/a key-direction 1' \
+       -e '/^;tls-auth/a key-direction 1' \
        $tmpdir/base.conf
 
 cd $CA_DIR
@@ -49,6 +48,10 @@ cat $tmpdir/base.conf \
     <(echo -e '</tls-auth>') \
     > $OUT_DIR/${1}.ovpn
 rm -rf $tmpdir
-cd $OUT_DIR && ls
+cd $OUT_DIR && ls -l
+cat <<-EOM
+Use following command to get client ovpn config file:
+scp root@$server_ip:$OUT_DIR/${1}.ovpn ./
+EOM
 
 
