@@ -4,9 +4,14 @@
 1. ./setup.sh
 2. ./new_client.sh
 
-> don't ask why, just personal experimence: when you use windows 10 ,should add following pieces in your ovpn config file
+## Personal Experimence
+in windows 10, use following config to setup and restore dns and gateway  
+bat files is under in windows_cli_only dir  
+since the bat is called by openvpn,  
+because the non-ascii char 's utf8 encoing cause problem,  
+you should consider using notepad to edit the bat file and save as ascii endoing.  
 ```
 script-security 2
-route-up 'C:\\Windows\\System32\\ROUTE.EXE delete 0.0.0.0/0 192.168.1.1'
-route-pre-down 'C:\\Windows\\System32\\ROUTE.EXE -p add 0.0.0.0/0 192.168.1.1'
+route-up 'setup.bat'
+down 'restore.bat'
 ```
