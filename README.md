@@ -4,7 +4,7 @@
 1. ./setup.sh
 2. ./new_client.sh
 
-## Personal Experimence
+## Windows10 Personal Experimence
 in windows 10, use following config to setup and restore dns and gateway  
 bat files is under in windows_cli_only dir  
 since the bat is called by openvpn,  
@@ -16,7 +16,7 @@ you can get the index number by issue following cmd line in cmd prompt:
 ```
 netsh inter ipv4 show inter
 ```
-### this should be added in to client's ovpn config file
+### this should be added in to windows10 client's ovpn config file
 ```
 script-security 2
 route-up 'setup.bat'
